@@ -1,0 +1,8 @@
+workspace:
+  id: 8a5cac35-83a9-4fe3-87ea-c06e14c81515
+cloudResources:
+  collections:
+    ../postman/collections/Todolist: 52619554-d2d1808d-82f3-42a5-b5d9-985189fb9fa8
+    ../postman/collections/My Collection: 52619554-e55abba0-3ca7-486c-97b0-148d7b702692
+  globals:
+    ../postman/globals/workspace.globals.yaml: 764a452f-0a7f-42cf-8b6f-4c096c1e8f9e
