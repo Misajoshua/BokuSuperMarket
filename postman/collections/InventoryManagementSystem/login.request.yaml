@@ -1,0 +1,8 @@
+$kind: http-request
+description: ""
+url: localhost:8000/users/loginuser
+method: POST
+body:
+  type: json
+  content: ""
+order: 4463758868271232

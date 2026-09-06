@@ -1,8 +1,0 @@
-$kind: http-request
-description: Daily store sales Inventory
-url: http://localhost:8000/products/createproduct
-method: POST
-body:
-  type: json
-  content: ""
-order: 3930230239527166

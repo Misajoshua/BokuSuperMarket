@@ -1,0 +1,24 @@
+$kind: http-request
+description: Daily store sales Inventory
+url: http://localhost:8000/products/createproduct
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \    \"name\": \"Yam\",\r
+
+    \    \"description\": \"Haevested from Gboku\",\r
+
+    \    \"price\": 1000,\r
+
+    \    \"stock\": \"1 Truck\",\r
+
+    \    \"size\": \"35g\",\r
+
+    \    \"quantity\": 20000,\r
+
+    \    \"color\": \"Brown\"\r
+
+    }"
+order: 3930230239527166
