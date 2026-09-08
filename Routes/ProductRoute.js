@@ -30,15 +30,22 @@
 // module.exports = router;
 
 const express = require('express');
+
+//import authentication middleware
+const { protect } = require('../Middleware/auth');
+
+//import authorization middleware
+const { authorize } = require('../Middleware/role');
+
 const router = express.Router();
 
 //import the product controller
 const productController = require('../Controllers/ProductController');
 
-router.post('/createproduct', productController.createProduct);
-router.get('/getallproducts', productController.getAllProducts);
+router.post('/createproduct', protect, authorize('superadmin'), productController.createProduct);
+router.get('/getallproducts', protect, productController.getAllProducts);
 router.get('/getproduct/:id', productController.getProductById);
-router.put('/updateproduct/:id', productController.updateProduct);
+router.put('/updateproduct/:id', protect, authorize('storekeeper'), productController.updateProduct);
 router.delete('/:id', productController.deleteProduct);
 
 module.exports = router;
