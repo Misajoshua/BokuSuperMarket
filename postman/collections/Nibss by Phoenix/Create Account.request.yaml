@@ -1,0 +1,33 @@
+$kind: http-request
+description: |-
+  This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.
+
+  A successful POST request typically returns a `200 OK` or `201 Created` response code.
+url: "{{base_url}}/api/account/create"
+method: POST
+body:
+  type: json
+  content: |-
+    {
+    	"name": "Kachi",
+        "email": "ocobute@gmail.com"
+    }
+auth:
+  type: bearer
+  credentials:
+    token: "{{auth_secret_0wlp}}"
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 500", function () {
+          pm.response.to.have.status(500);
+      });
+
+      pm.test("Response has success message", function () {
+          pm.response.to.have.body;
+      });
+
+      pm.test("Response contains account data", function () {
+          pm.response.to.have.body;
+      });
+order: 3000

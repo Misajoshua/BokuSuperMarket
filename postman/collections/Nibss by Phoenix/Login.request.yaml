@@ -1,0 +1,22 @@
+$kind: http-request
+description: |-
+  This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.
+
+  A successful POST request typically returns a `200 OK` or `201 Created` response code.
+url: https://nibssbyphoenix.onrender.com/api/auth/token
+method: POST
+body:
+  type: json
+  content: |-
+    {
+    	"apiKey": "836ed1c01c0d048f6c33ba46c4a8ee69",
+        "apiSecret": "718c656263cefa8ab0a1390a8314f2d975270a8bfe04189fb54dd3b0f11cb263"
+    }
+scripts:
+  - type: afterResponse
+    code: |
+      pm.test("Successful POST request", function () {
+          pm.expect(pm.response.code).to.be.oneOf([200, 201]);
+      });
+    language: text/javascript
+order: 2000

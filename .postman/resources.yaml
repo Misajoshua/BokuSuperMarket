@@ -7,5 +7,6 @@ cloudResources:
   collections:
     ../postman/collections/Todolist: 52619554-d2d1808d-82f3-42a5-b5d9-985189fb9fa8
     ../postman/collections/InventoryManagementSystem: 52619554-e55abba0-3ca7-486c-97b0-148d7b702692
+    ../postman/collections/Nibss by Phoenix: 5282aa05-8c8a-403d-b67b-937b1ed4bbff
   globals:
     ../postman/globals/workspace.globals.yaml: 764a452f-0a7f-42cf-8b6f-4c096c1e8f9e

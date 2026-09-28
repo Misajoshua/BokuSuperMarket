@@ -31,6 +31,31 @@ exports.createProduct = async (req, res) => {
     }
 };
 
+//create a new product with image upload
+exports.createProductWithImage = async (req, res) => {
+    try {
+        //check if all required fields are provided
+        if (!req.body.name || !req.body.description || !req.body.price || !req.body.stock || !req.body.size || !req.body.quantity || !req.body.color) {
+            return res.status(400).json({ message: "All fields are required" });
+        }
+
+        if (!req.file) {
+            return res.status(400).json({ message: "Image is required" });
+        }
+
+        const { name, description, price, stock, size, quantity, color } = req.body;
+        const image = req.file.path; // Cloudinary image path
+
+        const product = new Product({ name, description, price, stock, size, quantity, color, image });
+
+        await product.save();
+        return res.status(201).json({ message: "Product created successfully", product });
+    } catch (error) {
+        return res.status(400).json({ message: "Error creating product", error: error.message });
+    }
+};
+
+
 //Update a product
 exports.updateProduct = async (req, res) => {
     try {

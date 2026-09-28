@@ -43,9 +43,11 @@ const router = express.Router();
 const productController = require('../Controllers/ProductController');
 
 router.post('/createproduct', protect, authorize('superadmin'), productController.createProduct);
+router.post('/createproductwithimage', protect, productController.createProductWithImage);
+
 router.get('/getallproducts', protect, productController.getAllProducts);
 router.get('/getproduct/:id', productController.getProductById);
 router.put('/updateproduct/:id', protect, authorize('storekeeper'), productController.updateProduct);
-router.delete('/:id', productController.deleteProduct);
+router.delete('/:id', protect, authorize('superadmin'), productController.deleteProduct);
 
 module.exports = router;

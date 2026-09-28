@@ -141,14 +141,15 @@ exports.loginUser = async (req, res) => {
         if (!isPasswordValid) {
             return res.status(400).json({ message: 'Invalid email or password' });
         }
-
+  
+        const jwt = require('jsonwebtoken');
         const token = jwt.sign(
-            { id: user._id, email: user.email, name: user.name },
+            { id: user._id, email: user.email, name: user.name, role: user.role, hasAdminAccess: user.hasAdminAccess },
             process.env.JWT_SECRET,
             { expiresIn: '1h' }
         );
 
-        res.status(200).json({ message: 'Login successful', token, user });
+        res.status(200).json({ message: 'Login successful', token, role: user.role, hasAdminAccess: user.hasAdminAccess });
     } catch (error) {
         res.status(500).json({ message: 'Error logging in user', error: error.message });
     }
